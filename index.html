@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Keyboard Piano_M.Khojali</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- The night sky: stars and sparks are drawn here by script.js -->
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <main class="stage">
+
+    <header class="intro">
+      <h1>kHOJALI'S Night Piano</h1>
+      <p class="subtitle">
+        Press <kbd>A</kbd> <kbd>S</kbd> <kbd>D</kbd> <kbd>F</kbd>
+        <kbd>G</kbd> <kbd>H</kbd> <kbd>J</kbd> <kbd>K</kbd> to play.
+        Lanterns sit on <kbd>W</kbd> <kbd>E</kbd> <kbd>T</kbd> <kbd>Y</kbd> <kbd>U</kbd>.
+        Every note sends a star into the sky.
+      </p>
+    </header>
+
+    <section class="display" aria-live="polite">
+      <div id="last-note" class="last-note">Do Re Mi</div>
+      <p id="status" class="status">Press a key to begin. The sky is listening.</p>
+    </section>
+
+    <section class="controls">
+      <label class="control">
+        Scale
+        <select id="scale-select">
+          <option value="hijaz">Hijaz (Arabian night)</option>
+          <option value="major">Major (happy)</option>
+          <option value="pentatonic">Pentatonic (dreamy)</option>
+        </select>
+      </label>
+
+      <label class="control">
+        Sound
+        <select id="wave-select">
+          <option value="triangle">Triangle (flute)</option>
+          <option value="sine">Sine (soft)</option>
+          <option value="square">Square (retro game)</option>
+          <option value="sawtooth">Sawtooth (buzzy)</option>
+        </select>
+      </label>
+
+      <label class="control">
+        Cave echo
+        <input type="range" id="echo-range" min="0" max="0.7" step="0.05" value="0.3">
+      </label>
+    </section>
+
+    <section class="recorder">
+      <button id="rec-btn" type="button">Record</button>
+      <button id="play-btn" type="button" disabled>Play back</button>
+    </section>
+
+    <!-- Each key remembers its letter in data-key. --hue is its glow colour. -->
+    <div class="piano" id="piano">
+
+      <div class="key" data-key="a" style="--hue: 350">
+        <span class="note-name">C</span><span class="solfege">Do</span><kbd>A</kbd>
+      </div>
+      <div class="key" data-key="s" style="--hue: 22">
+        <span class="note-name">D</span><span class="solfege">Re</span><kbd>S</kbd>
+      </div>
+      <div class="key" data-key="d" style="--hue: 45">
+        <span class="note-name">E</span><span class="solfege">Mi</span><kbd>D</kbd>
+      </div>
+      <div class="key" data-key="f" style="--hue: 130">
+        <span class="note-name">F</span><span class="solfege">Fa</span><kbd>F</kbd>
+      </div>
+      <div class="key" data-key="g" style="--hue: 172">
+        <span class="note-name">G</span><span class="solfege">Sol</span><kbd>G</kbd>
+      </div>
+      <div class="key" data-key="h" style="--hue: 205">
+        <span class="note-name">A</span><span class="solfege">La</span><kbd>H</kbd>
+      </div>
+      <div class="key" data-key="j" style="--hue: 255">
+        <span class="note-name">B</span><span class="solfege">Ti</span><kbd>J</kbd>
+      </div>
+      <div class="key" data-key="k" style="--hue: 300">
+        <span class="note-name">C</span><span class="solfege">Do</span><kbd>K</kbd>
+      </div>
+
+      <!-- Lanterns (black keys). --i = which gap between white keys they hang over. -->
+      <div class="black-key" data-key="w" style="--i: 0; --hue: 8"><span>C#</span><kbd>W</kbd></div>
+      <div class="black-key" data-key="e" style="--i: 1; --hue: 35"><span>D#</span><kbd>E</kbd></div>
+      <div class="black-key" data-key="t" style="--i: 3; --hue: 150"><span>F#</span><kbd>T</kbd></div>
+      <div class="black-key" data-key="y" style="--i: 4; --hue: 190"><span>G#</span><kbd>Y</kbd></div>
+      <div class="black-key" data-key="u" style="--i: 5; --hue: 280"><span>A#</span><kbd>U</kbd></div>
+
+    </div>
+
+    <p class="footnote">Tip: the browser needs one key press or click before it will make sound. A "+" means a quarter-tone higher.</p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
